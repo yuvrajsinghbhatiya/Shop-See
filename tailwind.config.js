@@ -19,10 +19,13 @@ module.exports = {
     extend: {
       colors: {
         primary: '#222222',
-        secondary: '#ADD8E6',
+        secondary: '#F5E6E0',
+        custom: '#928fe2',
+        footer: '#b4aff1',
+        
       },
       backgroundImage: {
-        hero: "url('./img/bg_hero.svg')",
+        hero: "url('./img/bg_hero.jpg')",
       },
     },
   },
