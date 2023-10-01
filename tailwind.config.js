@@ -22,6 +22,7 @@ module.exports = {
         secondary: '#F5E6E0',
         custom: '#928fe2',
         footer: '#b4aff1',
+        fadeCustom: "#b5afed"
         
       },
       backgroundImage: {
