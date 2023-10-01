@@ -33,7 +33,7 @@ const CheckoutPage = () => {
     }
 
     
-    alert(`🎉 Order Placed Successfully! 🎉\nTotal Amount: $${total.toFixed(2)} 👌`);
+    alert("Feature coming soon!!!!!");
     clearCart();
     setPaymentInfo(initialState);
     window.location.href = "/";
