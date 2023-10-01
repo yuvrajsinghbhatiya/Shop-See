@@ -38,7 +38,7 @@ const ProductDetails = () => {
             <p className="mb-8">{description}</p>
             <button
               onClick={() => addToCart(product, product.id)}
-              className="bg-custom py-4 px-8 text-white font-medium"
+              className="bg-primary py-4 px-8 text-white font-medium rounded-lg hover:bg-gray-400"
             >
               Add to cart
             </button>

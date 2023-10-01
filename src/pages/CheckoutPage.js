@@ -1,16 +1,18 @@
 import React, { useContext, useState } from "react";
-import { CartContext } from "../contexts/CartContext"; // assuming you have a CartContext
-// import states from "./indiaStates"; // assuming you have a list of Indian states
+import { CartContext } from "../contexts/CartContext"; 
 
 const CheckoutPage = () => {
-  const { cart, total } = useContext(CartContext);
-  const [paymentInfo, setPaymentInfo] = useState({
+  const { cart, total, clearCart } = useContext(CartContext);
+  const initialState = {
     name: "",
+    contact: "",
     cardNumber: "",
     address: "",
     state: "",
-    paymentMethod: "Credit Card", // Default payment method
-  });
+    paymentMethod: "Credit Card", 
+  };
+
+  const [paymentInfo, setPaymentInfo] = useState(initialState);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -18,19 +20,25 @@ const CheckoutPage = () => {
   };
 
   const handlePayment = () => {
-    // Handle payment logic here (e.g., send payment information to the server)
-    alert(`Payment successful! Total Amount: $${total.toFixed(2)}`);
+
+    if (!paymentInfo.name || !paymentInfo.contact || !paymentInfo.address) {
+      alert("Please fill out all required fields.");
+      return;
+    }
+  
+    const contactPattern = /^\d{10}$/;
+    if (!contactPattern.test(paymentInfo.contact)) {
+      alert("Please enter a valid 10-digit contact number.");
+      return;
+    }
+
+    
+    alert(`🎉 Order Placed Successfully! 🎉\nTotal Amount: $${total.toFixed(2)} 👌`);
+    clearCart();
+    setPaymentInfo(initialState);
+    window.location.href = "/";
   };
 
-  const states = [
-    "Maharashtra",
-    "Tamil Nadu",
-    "Karnataka",
-    "Delhi",
-    "Telangana",
-    "Gujarat",
-    "West Bengal",
-  ];
 
   return (
     <div className="container mx-auto my-8 mt-[8rem] mb-16 flex flex-col lg:flex-row lg:gap-8">
@@ -47,6 +55,7 @@ const CheckoutPage = () => {
             value={paymentInfo.name}
             onChange={handleInputChange}
             className="p-2 w-full border rounded"
+            placeholder="Enter your name....."
           />
         </div>
         <div className="mb-6">
@@ -59,6 +68,8 @@ const CheckoutPage = () => {
             value={paymentInfo.contact}
             onChange={handleInputChange}
             className="p-2 w-full border rounded"
+            placeholder="+91 ____ ____ __"
+
           />
         </div>
         <div className="mb-6">
@@ -71,25 +82,20 @@ const CheckoutPage = () => {
             value={paymentInfo.address}
             onChange={handleInputChange}
             className="p-2 w-full border rounded"
+            placeholder="Area / Pin Code / Landmark"
           />
         </div>
         <div className="mb-6">
           <label className="block text-md font-medium text-gray-700">
             State
           </label>
-          <select
+          <input
+            type="text"
             name="state"
             value={paymentInfo.state}
             onChange={handleInputChange}
             className="p-2 w-full border rounded"
-          >
-            <option value="">Select State</option>
-            {states.map((state) => (
-              <option key={state} value={state}>
-                {state}
-              </option>
-            ))}
-          </select>
+          />
         </div>
         <div className="mb-6">
           <label className="block text-md font-medium text-gray-700">
@@ -109,7 +115,7 @@ const CheckoutPage = () => {
         </div>
         <button
           onClick={handlePayment}
-          className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition mt-4 w-full lg:w-auto"
+          className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-gray-400 transition mt-4 w-full text-center lg:w-auto"
         >
           Pay
         </button>
@@ -122,7 +128,7 @@ const CheckoutPage = () => {
         <div className="overflow-x-auto mt-[2rem]">
           <table className="w-full lg:min-w-max bg-white border-collapse border rounded-lg">
             <thead>
-              <tr className="bg-gray-100 ">
+              <tr className="bg-gray-300 item-start ">
                 <th className="p-2">Item</th>
                 <th className="p-2">Price</th>
                 <th className="p-2">Quantity</th>
@@ -131,20 +137,20 @@ const CheckoutPage = () => {
             </thead>
             <tbody>
               {cart.map((item) => (
-                <tr key={item.id} className="border-b">
-                  <td className="p-2">
+                <tr key={item.id} className="text-sm">
+                  <td className="p-[0.2]">
                     <div className="flex items-center">
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-8 h-8 object-cover mr-2"
+                        className="w-8 h-10 object-cover mr-2"
                       />
                       {item.title}
                     </div>
                   </td>
-                  <td className="p-2">${item.price.toFixed(2)}</td>
-                  <td className="p-2">{item.amount}</td>
-                  <td className="p-2">
+                  <td className="p-[0.2]">${item.price.toFixed(2)}</td>
+                  <td className="p-[0.2]">{item.amount}</td>
+                  <td className="p-[0.2]">
                     ${(item.price * item.amount).toFixed(2)}
                   </td>
                 </tr>
@@ -152,9 +158,10 @@ const CheckoutPage = () => {
             </tbody>
           </table>
         </div>
-        <div className="flex justify-between items-center border-t pt-8">
+        <hr className="my-4 border-t border-gray-500" />
+        <div className="flex justify-between items-center">
           <span className="font-semibold text-lg">Total:</span>
-          <span className="bg-dark p-4 rounded-lg">${total.toFixed(2)}</span>
+          <span className="bg-gray-300 text-lg font-semibold p-2 rounded-lg">${total.toFixed(2)}</span>
         </div>
       </div>
     </div>

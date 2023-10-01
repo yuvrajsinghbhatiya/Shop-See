@@ -47,7 +47,7 @@ const Sidebar = () => {
               </div>
               <div
                 onClick={clearCart}
-                className="cursor-pointer py-4 bg-custom text-white w-12 h-12 flex justify-center items-center text-xl"
+                className="cursor-pointer py-4 bg-custom text-white w-12 h-12 flex justify-center items-center text-xl hover:bg-gray-400"
               >
                 <FiTrash2 />
               </div>
@@ -57,7 +57,7 @@ const Sidebar = () => {
             <Link
               to="/checkout"
               onClick={handleCheckoutClick}
-              className="bg-primary flex p-4 justify-center items-center text-white w-full font-medium"
+              className="bg-primary flex p-4 justify-center items-center text-white w-full font-medium hover:bg-gray-400"
             >
               Checkout
             </Link>
