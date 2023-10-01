@@ -9,9 +9,9 @@ const DropdownMenu = () => {
   // Dropdown menu content goes here
   return (
     <div className="bg-fadeCustom absolute right-2 mt-2 p-2 rounded shadow">
-      <Link to="#" className="block py-1 text-primary hover:border-b border-gray-400">Men</Link>
-      <Link to="#" className="block py-1 text-primary hover:border-b border-gray-400">Women</Link>
-      <Link to="#" className="block py-1 text-primary hover:border-b border-gray-400">Kids</Link>
+      <Link to="#" className="block py-1 text-primary font-medium hover:border-b border-gray-400">Men</Link>
+      <Link to="#" className="block py-1 text-primary font-medium hover:border-b border-gray-400">Women</Link>
+      <Link to="#" className="block py-1 text-primary font-medium hover:border-b border-gray-400">Kids</Link>
     </div>
   );
 };
