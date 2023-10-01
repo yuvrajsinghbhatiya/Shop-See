@@ -5,6 +5,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CheckoutPage from "./pages/CheckoutPage"; // Import the CheckoutPage component
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/checkout" element={<CheckoutPage />} /> {/* Add this line for the /checkout route */}
         </Routes>
         <Sidebar />
         <Footer />

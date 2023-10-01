@@ -17,6 +17,7 @@ const Hero = () => {
           </h1>
           <Link
             to={"/"}
+            
             className="self-start uppercase font-semibold border-b-2 border-primary"
           >
             Shopping Now
