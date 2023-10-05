@@ -2,26 +2,31 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
+const CART_STORAGE_KEY = "cartItems";
+
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || []
+  );
   const [itemAmount, setItemAmount] = useState(0);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const total = cart.reduce((accumulator, currentItem) => {
+    // Update localStorage whenever the cart changes
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+
+    // Calculate total price
+    const totalPrice = cart.reduce((accumulator, currentItem) => {
       return accumulator + currentItem.price * currentItem.amount;
     }, 0);
-    setTotal(total);
-  }, [cart]); // Add [cart] as a dependency
+    setTotal(totalPrice);
 
-  useEffect(() => {
-    if (cart) {
-      const amount = cart.reduce((accumulator, currentItem) => {
-        return accumulator + currentItem.amount;
-      }, 0);
-      setItemAmount(amount);
-    }
-  }, [cart]); // Add [cart] as a dependency
+    // Calculate total item amount
+    const totalAmount = cart.reduce((accumulator, currentItem) => {
+      return accumulator + currentItem.amount;
+    }, 0);
+    setItemAmount(totalAmount);
+  }, [cart]);
 
   const addToCart = (product, id) => {
     const newItem = { ...product, amount: 1 };

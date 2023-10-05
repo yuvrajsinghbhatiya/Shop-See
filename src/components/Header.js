@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 import Logo from "../img/logo.png";
 
 
-
-
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const { isOpen, setIsOpen } = useContext(SidebarContext);
