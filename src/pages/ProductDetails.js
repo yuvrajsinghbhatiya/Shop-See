@@ -21,27 +21,35 @@ const ProductDetails = () => {
   }
 
   const { title, price, description, image } = product;
+
   return (
-    <section className="pt-32 pb-12 lg:py-32 h-screen flex items-center">
-      <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row items-center">
-          <div className="flex flex-1 justify-center items-center mb-8 lg:mb-0">
-            <img className="max-w-[200px] lg:max-w-sm" src={image} alt="" />
+    <section className="min-h-screen flex justify-center items-center py-10">
+      <div className="container mx-auto p-4">
+        <div className="lg:flex bg-white rounded-lg  p-8">
+          {/* Left Column */}
+          <div className="lg:w-1/2 mb-4 lg:mb-0 flex justify-center">
+            <img
+              className="max-w-[300px] w-full h-auto"
+              src={image}
+              alt={title}
+            />
           </div>
-          <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-[26px] font-medium mb-2 max-w-[450px] mx-auto lg:mx-0 ">
-              {title}
-            </h1>
-            <div className="text-xl text-custom font-medium mb-6">
-              $ {price}
+
+          {/* Right Column */}
+          <div className="lg:w-1/2 flex flex-col justify-center p-8 bg-gray-200 rounded-lg">
+            <h1 className="text-3xl font-bold mb-6">{title}</h1>
+            <div className="text-xl text-custom font-medium mb-6 pl-3">
+              ₹ {price}.00
             </div>
             <p className="mb-8">{description}</p>
-            <button
-              onClick={() => addToCart(product, product.id)}
-              className="bg-primary py-4 px-8 text-white font-medium rounded-lg hover:bg-gray-400"
-            >
-              Add to cart
-            </button>
+            <div className="flex  lg:justify-start lg:items-center items-center justify-center mb-4">
+              <button
+                onClick={() => addToCart(product, product.id)}
+                className="bg-primary py-2 px-4 text-white font-medium rounded-lg border-2 border-black transition duration-150 hover:bg-fadeCustom hover:text-black"
+              >
+                Add to cart
+              </button>
+            </div>
           </div>
         </div>
       </div>

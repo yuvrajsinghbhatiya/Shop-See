@@ -43,7 +43,7 @@ const CheckoutPage = () => {
   return (
     <div className="container mx-auto my-8 mt-[8rem] mb-16 flex flex-col lg:flex-row lg:gap-8">
       {/* Left Side: Payment Form */}
-      <div className="flex-1 mb-8 lg:mb-0">
+      <div className="flex-1 mb-8 lg:mb-0 bg-gray-200 p-4 rounded-lg">
         <h2 className="text-2xl font-semibold mb-5 uppercase">Payment Information</h2>
         <div className="mb-5 mt-[2rem]">
           <label className="block text-md font-medium text-gray-700">
@@ -54,7 +54,7 @@ const CheckoutPage = () => {
             name="name"
             value={paymentInfo.name}
             onChange={handleInputChange}
-            className="p-2 w-full border rounded"
+            className="p-2 w-full border rounded-lg"
             placeholder="Enter your name....."
           />
         </div>
@@ -67,7 +67,7 @@ const CheckoutPage = () => {
             name="contact"
             value={paymentInfo.contact}
             onChange={handleInputChange}
-            className="p-2 w-full border rounded"
+            className="p-2 w-full border rounded-lg"
             placeholder="+91 ____ ____ __"
 
           />
@@ -81,7 +81,7 @@ const CheckoutPage = () => {
             name="address"
             value={paymentInfo.address}
             onChange={handleInputChange}
-            className="p-2 w-full border rounded"
+            className="p-2 w-full border rounded-lg"
             placeholder="Area / Pin Code / Landmark"
           />
         </div>
@@ -94,7 +94,7 @@ const CheckoutPage = () => {
             name="state"
             value={paymentInfo.state}
             onChange={handleInputChange}
-            className="p-2 w-full border rounded"
+            className="p-2 w-full border rounded-lg"
           />
         </div>
         <div className="mb-6">
@@ -105,7 +105,7 @@ const CheckoutPage = () => {
             name="paymentMethod"
             value={paymentInfo.paymentMethod}
             onChange={handleInputChange}
-            className="p-2 w-full border rounded"
+            className="p-2 w-full border rounded-lg"
           >
             <option value="Credit Card">Credit Card</option>
             <option value="Debit Card">Debit Card</option>
@@ -115,7 +115,7 @@ const CheckoutPage = () => {
         </div>
         <button
           onClick={handlePayment}
-          className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-gray-400 transition mt-4 w-full text-center lg:w-auto"
+          className="bg-primary text-white py-2 px-4 rounded-lg border-2 border-black transition duration-150 hover:bg-fadeCustom hover:text-black mt-4 w-full text-center lg:w-auto"
         >
           Pay
         </button>
@@ -128,7 +128,7 @@ const CheckoutPage = () => {
         <div className="overflow-x-auto mt-[2rem]">
           <table className="w-full lg:min-w-max bg-white border-collapse border rounded-lg">
             <thead>
-              <tr className="bg-gray-300 item-start ">
+              <tr className="bg-gray-300 item-start">
                 <th className="p-2">Item</th>
                 <th className="p-2">Price</th>
                 <th className="p-2">Quantity</th>
@@ -148,10 +148,10 @@ const CheckoutPage = () => {
                       {item.title}
                     </div>
                   </td>
-                  <td className="p-[0.2]">${item.price.toFixed(2)}</td>
+                  <td className="p-[0.2]">₹ {item.price.toFixed(2)}</td>
                   <td className="p-[0.2]">{item.amount}</td>
                   <td className="p-[0.2]">
-                    ${(item.price * item.amount).toFixed(2)}
+                  ₹ {(item.price * item.amount).toFixed(2)}
                   </td>
                 </tr>
               ))}
@@ -161,7 +161,7 @@ const CheckoutPage = () => {
         <hr className="my-4 border-t border-gray-500" />
         <div className="flex justify-between items-center">
           <span className="font-semibold text-lg">Total:</span>
-          <span className="bg-gray-300 text-lg font-semibold p-2 rounded-lg">${total.toFixed(2)}</span>
+          <span className="bg-gray-300 text-lg font-semibold p-2 rounded-lg">₹ {total.toFixed(2)}</span>
         </div>
       </div>
     </div>

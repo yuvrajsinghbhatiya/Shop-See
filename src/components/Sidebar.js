@@ -12,13 +12,15 @@ const Sidebar = () => {
   const cartIsEmpty = cart.length === 0;
 
   const handleCheckoutClick = () => {
-    handleClose(); // Close the sidebar when the user clicks the "Checkout" link
+    handleClose(); 
   };
 
   return (
     <Link
       to="/"
-      className={`${isOpen ? "right-0" : "-right-full"} w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px]`}
+      className={`${
+        isOpen ? "right-0" : "-right-full"
+      } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px]`}
     >
       <div className="flex items-center justify-between py-6 border-b">
         <div className="uppercase text-sm font-semibold">
@@ -43,11 +45,12 @@ const Sidebar = () => {
           ) : (
             <div className="flex w-full justify-between items-center">
               <div className="uppercase font-semibold">
-                <span className="mr-2">Total:</span>$ {parseFloat(total).toFixed(2)}
+                <span className="mr-2">Total:</span>₹{" "}
+                {parseFloat(total).toFixed(2)}
               </div>
               <div
                 onClick={clearCart}
-                className="cursor-pointer py-4 bg-custom text-white w-12 h-12 flex justify-center items-center text-xl hover:bg-gray-400"
+                className="cursor-pointer py-4 bg-black text-white w-12 h-12 flex justify-center items-center text-xl border-2 border-black transition duration-150 hover:bg-fadeCustom hover:text-black rounded-lg"
               >
                 <FiTrash2 />
               </div>
@@ -57,7 +60,7 @@ const Sidebar = () => {
             <Link
               to="/checkout"
               onClick={handleCheckoutClick}
-              className="bg-primary flex p-4 justify-center items-center text-white w-full font-medium hover:bg-gray-400"
+              className="bg-primary flex p-4 justify-center items-center text-white w-full font-medium border-2 border-black transition duration-150 hover:bg-fadeCustom hover:text-black rounded-lg"
             >
               Checkout
             </Link>
