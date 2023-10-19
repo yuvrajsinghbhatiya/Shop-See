@@ -1,13 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ProductContext } from "../../contexts/ProductContext";
 import Product from "../Product";
 import menProductImage from "../../img/productpage/menproduct.webp";
 
 const MenProductPage = () => {
   const { products } = useContext(ProductContext);
+  const [sortBy, setSortBy] = useState("default");
 
-  // Filter men's products and limit to 5 items
-  const menProducts = products.filter((prod) => prod.category === "men");
+  const sortProducts = (type) => {
+    setSortBy(type);
+  };
+
+  const sortedProducts = () => {
+    let sorted = [...products];
+    if (sortBy === "highToLow") {
+      sorted.sort((a, b) => b.price - a.price);
+    } else if (sortBy === "lowToHigh") {
+      sorted.sort((a, b) => a.price - b.price);
+    }
+    return sorted.filter((prod) => prod.category === "men");
+  };
 
   return (
     <>
@@ -36,10 +48,23 @@ const MenProductPage = () => {
           </div>
         </div>
 
+        <div className="py-4 px-6 flex items-center space-x-4">
+          <span>Sort By:</span>
+          <select
+            className="border rounded p-2"
+            onChange={(e) => sortProducts(e.target.value)}
+            value={sortBy}
+          >
+            <option value="default">Default</option>
+            <option value="highToLow">Price High to Low</option>
+            <option value="lowToHigh">Price Low to High</option>
+          </select>
+        </div>
+
         <section className="py-16">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-              {menProducts.map((product) => (
+              {sortedProducts().map((product) => (
                 <Product product={product} key={product.id} />
               ))}
             </div>
