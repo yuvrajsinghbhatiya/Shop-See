@@ -48,16 +48,23 @@ const Sidebar = () => {
               </div>
             </>
           ) : (
-            <div className="flex w-full justify-between items-center">
-              <div className="font-semibold">
-                <span className="mr-2 text-xl">Total :</span>
-                <span className="text-xl">
-                  {" "}
-                  ₹ {parseFloat(total).toFixed(2)}
-                </span>
-              </div>
+            // Individual item prices and quantities
+            <div className="mb-4">
+              {cart.map((item) => (
+                <div key={item.id} className="flex justify-between">
+                  <span>{item.name}</span>
+                  <span>₹ {item.price.toFixed(2)}</span>
+                </div>
+              ))}
             </div>
           )}
+          {/* Total price */}
+          <div className="flex justify-between items-center mb-4">
+            <div className="font-semibold">
+              <span className="mr-2 text-xl">Total :</span>
+              <span className="text-xl"> ₹ {total.toFixed(2)}</span>
+            </div>
+          </div>
           {!cartIsEmpty && (
             <Link
               to="/checkout"
