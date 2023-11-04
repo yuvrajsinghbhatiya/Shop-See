@@ -22,19 +22,19 @@ const CartItem = ({ item }) => {
 
 
   return (
-    <div className="flex gap-x-4 py-2 lg:px-6 border-2 border-[#e4e4e4] w-full font-light text-gray-500">
+    <div className="flex gap-x-4 py-1 lg:px-6 border-2 border-[#e4e4e4] w-full font-light text-gray-500">
       <div className="w-full min-h-[150px] flex items-center gap-x-4">
         {/* image */}
         <Link to={`/product/${id}`}>
-          <img className="max-w-[80px]" src={image} alt="" />
+          <img className="max-w-[70px]" src={image} alt="" />
         </Link>
-        <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col p-4">
           {/* title and remove icon */}
           <div className="flex justify-between mb-2">
             {/* title */}
             <Link
               to={`/product/${id}`}
-              className="text-lg font-medium max-w-[240px] text-black"
+              className="text-md font-medium max-w-[200px] text-black"
             >
               {title}
             </Link>
@@ -44,7 +44,7 @@ const CartItem = ({ item }) => {
               
               className="text-xl cursor-pointer"
             >
-              <IoMdClose className="text-gray-500 hover:text-red-500 transition" />
+              <IoMdClose className="text-red-500 font-bold transition" />
             </div>
           </div>
           <div className="flex gap-x-2 h-[36px] text-sm">
@@ -66,7 +66,7 @@ const CartItem = ({ item }) => {
               </div>
             </div>
             
-            <div className="flex-1 text-lg flex justify-end items-center text-primary font-medium">
+            <div className="flex-1 text-md flex justify-end items-center text-primary font-medium">
               {`₹ ${parseFloat(price * amount).toFixed(2)}`}
             </div>
           </div>

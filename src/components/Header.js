@@ -22,31 +22,29 @@ const Header = () => {
         isActive ? "bg-white py-4 shadow-md" : "bg-white py-6 shadow-md"
       } fixed w-full z-10 transition-all`}
     >
-      <div className="container mx-auto flex items-center justify-between h-[40px]">
+      <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[40px]">
         <Link to={"/"}>
           <div>
-            <img className="w-[200px]" src={Logo} alt="" />
+            <img className="w-[150px] md:w-[200px]" src={Logo} alt="" />
           </div>
         </Link>
 
-        <div className="flex items-center space-x-6">
-          <div className="hidden md:block">
-            <Link to={"/"} className="text-xl font-normal mr-8 uppercase">
-              Home
-            </Link>
-            <Link
-              to={"/category"}
-              className="text-xl font-normal mr-8 uppercase"
-            >
-              Categories
-            </Link>
-          </div>
+        <div className="hidden md:flex items-center space-x-6">
+          <Link to={"/"} className="text-lg font-normal uppercase">
+            Home
+          </Link>
+          <Link to={"/category"} className="text-lg font-normal uppercase">
+            Categories
+          </Link>
+        </div>
+
+        <div className="flex items-center space-x-4">
           <div
             onClick={() => setIsOpen(!isOpen)}
             className="cursor-pointer relative"
           >
             <BsBag className="text-2xl" />
-            <div className="bg-custom absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
+            <div className="bg-custom absolute -right-2 -bottom-2 text-xs w-6 h-6 text-white rounded-full flex justify-center items-center">
               {itemAmount}
             </div>
           </div>
