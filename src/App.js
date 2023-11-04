@@ -6,9 +6,8 @@ import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CheckoutPage from "./pages/CheckoutPage";
-import MenProductPage from "./components/category/MenProductPage";
-import WomenProductPage from "./components/category/WomenProductPage";
-import KidsProductPage from "./components/category/KidProductPage";
+import Categories from "./components/Categories";
+
 
 const App = () => {
   return (
@@ -19,10 +18,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/menproductpage" element={<MenProductPage />} />
-          <Route path="/womenproductpage" element={<WomenProductPage />} />
-          <Route path="/kidproductpage" element={<KidsProductPage />} />
-
+          <Route path="/category" element={<Categories />} />
         </Routes>
         <Sidebar />
         <Footer />

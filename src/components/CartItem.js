@@ -9,17 +9,20 @@ const CartItem = ({ item }) => {
   const { id, title, image, price, amount } = item;
 
   const handleDecrement = (event) => {
-    event.stopPropagation(); // Prevent event from bubbling up
+    event.preventDefault();
+    event.stopPropagation(); 
     decreaseAmount(id);
   };
 
   const handleIncrement = (event) => {
-    event.stopPropagation(); // Prevent event from bubbling up
+    event.preventDefault();
+    event.stopPropagation(); 
     increaseAmount(id);
   };
 
+
   return (
-    <div className="flex gap-x-4 py-2 lg:px-6 border-b border-gray-200 w-full font-light text-gray-500">
+    <div className="flex gap-x-4 py-2 lg:px-6 border-2 border-[#e4e4e4] w-full font-light text-gray-500">
       <div className="w-full min-h-[150px] flex items-center gap-x-4">
         {/* image */}
         <Link to={`/product/${id}`}>
@@ -31,13 +34,14 @@ const CartItem = ({ item }) => {
             {/* title */}
             <Link
               to={`/product/${id}`}
-              className="text-sm uppercase font-medium max-w-[240px] text-primary hover:underline"
+              className="text-lg font-medium max-w-[240px] text-black"
             >
               {title}
             </Link>
             {/* remove */}
             <div
-              onClick={() => removeFromCart(id)}
+              onClick={() => removeFromCart(id)} 
+              
               className="text-xl cursor-pointer"
             >
               <IoMdClose className="text-gray-500 hover:text-red-500 transition" />
@@ -51,7 +55,7 @@ const CartItem = ({ item }) => {
               >
                 <IoMdRemove />
               </div>
-              <div className="h-full flex justify-center items-center px-2">
+              <div className="h-full text-lg flex justify-center items-center px-2">
                 {amount}
               </div>
               <div
@@ -61,10 +65,8 @@ const CartItem = ({ item }) => {
                 <IoMdAdd />
               </div>
             </div>
-            <div className="flex-1 flex justify-around items-center">
-              ₹ {price}
-            </div>
-            <div className="flex-1 flex justify-end items-center text-primary font-medium">
+            
+            <div className="flex-1 text-lg flex justify-end items-center text-primary font-medium">
               {`₹ ${parseFloat(price * amount).toFixed(2)}`}
             </div>
           </div>

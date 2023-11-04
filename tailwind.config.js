@@ -2,12 +2,23 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     fontFamily: {
-      primary: 'Poppins',
+      primary: 'Blinker',
+    },
+    fontSize: {
+      sm: ['14px', '20px'],
+      base: ['16px', '24px'],
+      lg: ['18px', '26px'],
+      xl: ['20px', '28px'],
+      '2xl': ['24px', '32px'],
+      '3xl': ['30px', '38px'],
+      '4xl': ['36px', '44px'],
+      '5xl': ['48px', '56px'],
+      '6xl': ['64px', '72px'],
     },
     container: {
       padding: {
-        DEFAULT: '30px',
-        lg: '0',
+        DEFAULT: '40px',
+        lg: '30px',
       },
     },
     screens: {

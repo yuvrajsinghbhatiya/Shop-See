@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { IoMdArrowForward } from "react-icons/io";
-import { FiTrash2 } from "react-icons/fi";
 import CartItem from "../components/CartItem";
 import { SidebarContext } from "../contexts/SidebarContext";
 import { CartContext } from "../contexts/CartContext";
+import EmptyIMG from "../img/empty.png";
 
 const Sidebar = () => {
   const { isOpen, handleClose } = useContext(SidebarContext);
-  const { cart, clearCart, total, itemAmount } = useContext(CartContext);
+  const { cart, total, itemAmount } = useContext(CartContext);
   const cartIsEmpty = cart.length === 0;
 
   const handleCheckoutClick = () => {
-    handleClose(); 
+    handleClose();
   };
 
   return (
@@ -23,7 +23,7 @@ const Sidebar = () => {
       } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px]`}
     >
       <div className="flex items-center justify-between py-6 border-b">
-        <div className="uppercase text-sm font-semibold">
+        <div className="uppercase text-lg font-semibold">
           Shopping Bag ({itemAmount})
         </div>
         <div
@@ -39,20 +39,22 @@ const Sidebar = () => {
         })}
         <div className="flex flex-col gap-y-3 py-4 mt-4">
           {cartIsEmpty ? (
-            <div className="text-center text-gray-500">
-              Cart is empty. Add items to continue shopping.
-            </div>
+            <>
+              <div className="text-center mt-10">
+                <img src={EmptyIMG} alt="Empty Cart" className="mx-auto" />
+              </div>
+              <div className="text-center text-primary text-xl mb-4">
+                No items in your bag
+              </div>
+            </>
           ) : (
             <div className="flex w-full justify-between items-center">
-              <div className="uppercase font-semibold">
-                <span className="mr-2">Total:</span>₹{" "}
-                {parseFloat(total).toFixed(2)}
-              </div>
-              <div
-                onClick={clearCart}
-                className="cursor-pointer py-4 bg-black text-white w-12 h-12 flex justify-center items-center text-xl border-2 border-black transition duration-150 hover:bg-fadeCustom hover:text-black rounded-lg"
-              >
-                <FiTrash2 />
+              <div className="font-semibold">
+                <span className="mr-2 text-xl">Total :</span>
+                <span className="text-xl">
+                  {" "}
+                  ₹ {parseFloat(total).toFixed(2)}
+                </span>
               </div>
             </div>
           )}
@@ -60,7 +62,7 @@ const Sidebar = () => {
             <Link
               to="/checkout"
               onClick={handleCheckoutClick}
-              className="bg-primary flex p-4 justify-center items-center text-white w-full font-medium border-2 border-black transition duration-150 hover:bg-fadeCustom hover:text-black rounded-lg"
+              className="bg-primary flex p-4 justify-center items-center text-white text-lg w-full font-medium transition duration-150 hover:bg-fadeCustom hover:text-black "
             >
               Checkout
             </Link>
