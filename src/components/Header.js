@@ -25,15 +25,15 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[40px]">
         <Link to={"/"}>
           <div>
-            <img className="w-[150px] md:w-[200px]" src={Logo} alt="" />
+            <img className="w-[130px] md:w-[160px]" src={Logo} alt="" />
           </div>
         </Link>
 
-        <div className="hidden md:flex items-center space-x-6">
-          <Link to={"/"} className="text-lg font-normal uppercase">
+        <div className="hidden md:flex space-x-6">
+          <Link to={"/"} className="text-xl font-normal uppercase">
             Home
           </Link>
-          <Link to={"/category"} className="text-lg font-normal uppercase">
+          <Link to={"/category"} className="text-xl font-normal uppercase">
             Categories
           </Link>
         </div>

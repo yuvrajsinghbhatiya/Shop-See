@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
         
       </div>
-      <div className="flex flex-col items-center justify-center md:flex-row">
+      <div className="flex flex-row items-center justify-center md:flex-wrap">
           <a href="/" className="text-lg text-priamry hover:text-gray-300 mx-4 mb-2 md:mb-0">About Us</a>
           <a href="/" className="text-lg text-priamry hover:text-gray-300 mx-4 mb-2 md:mb-0">Contact Us</a>
           <a href="/" className="text-lg text-priamry hover:text-gray-300 mx-4 mb-2 md:mb-0">FAQ</a>
