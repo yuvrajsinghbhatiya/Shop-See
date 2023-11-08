@@ -13,13 +13,19 @@ const Header = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
+  const toggleMenu = (e) => {
     setMenuOpen(!menuOpen);
+    e.preventDefault();
+
   };
 
-  const closeMenu = () => {
+  const closeMenu = (e) => {
     setMenuOpen(false);
+    e.preventDefault();
+
   };
+
+  
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -82,8 +88,8 @@ const Header = () => {
           <div className="flex justify-end p-5">
             <FaTimes className="text-3xl cursor-pointer" onClick={closeMenu} />
           </div>
-          <div className="flex flex-col space-y-4 items-center justify-center h-60">
-            <Link to={"/"} className="text-3xl font-normal uppercase">
+          <div className="flex flex-col space-y-4 items-center justify-center h-60" onClick={closeMenu}>
+            <Link to={"/"} className="text-3xl font-normal uppercase" >
               Home
             </Link>
             <Link to={"/category"} className="text-3xl font-normal uppercase">
