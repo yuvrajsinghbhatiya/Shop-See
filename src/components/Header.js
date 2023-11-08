@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { SidebarContext } from "../contexts/SidebarContext";
 import { CartContext } from "../contexts/CartContext";
 import { BsBag } from "react-icons/bs";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Logo from "../img/logo.png";
 
@@ -10,10 +11,27 @@ const Header = () => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { itemAmount } = useContext(CartContext);
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
     });
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", () => {
+        window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
+      });
+    };
   }, []);
 
   return (
@@ -29,16 +47,16 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="hidden md:flex space-x-6">
-          <Link to={"/"} className="text-xl font-normal uppercase">
-            Home
-          </Link>
-          <Link to={"/category"} className="text-xl font-normal uppercase">
-            Categories
-          </Link>
-        </div>
-
         <div className="flex items-center space-x-4">
+          <div className="hidden md:flex space-x-6 mr-5">
+            <Link to={"/"} className="text-xl font-normal uppercase">
+              Home
+            </Link>
+            <Link to={"/category"} className="text-xl font-normal uppercase">
+              Categories
+            </Link>
+          </div>
+
           <div
             onClick={() => setIsOpen(!isOpen)}
             className="cursor-pointer relative"
@@ -48,8 +66,32 @@ const Header = () => {
               {itemAmount}
             </div>
           </div>
+
+          <div className="md:hidden">
+            {menuOpen ? (
+              <FaTimes className="text-2xl" onClick={closeMenu} />
+            ) : (
+              <FaBars className="text-2xl" onClick={toggleMenu} />
+            )}
+          </div>
         </div>
       </div>
+
+      {menuOpen && (
+        <div className="md:hidden fixed top-0 left-0 w-full h-screen bg-gray-200">
+          <div className="flex justify-end p-5">
+            <FaTimes className="text-3xl cursor-pointer" onClick={closeMenu} />
+          </div>
+          <div className="flex flex-col space-y-4 items-center justify-center h-full">
+            <Link to={"/"} className="text-3xl font-normal uppercase">
+              Home
+            </Link>
+            <Link to={"/category"} className="text-3xl font-normal uppercase">
+              Categories
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
