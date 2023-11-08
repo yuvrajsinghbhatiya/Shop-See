@@ -43,7 +43,7 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[40px]">
         <Link to={"/"}>
           <div>
-            <img className="w-[130px] md:w-[160px]" src={Logo} alt="" />
+            <img className="w-[140px] md:w-[160px]" src={Logo} alt="" />
           </div>
         </Link>
 
@@ -82,7 +82,7 @@ const Header = () => {
           <div className="flex justify-end p-5">
             <FaTimes className="text-3xl cursor-pointer" onClick={closeMenu} />
           </div>
-          <div className="flex flex-col space-y-4 items-center justify-center h-full">
+          <div className="flex flex-col space-y-4 items-center justify-center h-60">
             <Link to={"/"} className="text-3xl font-normal uppercase">
               Home
             </Link>
