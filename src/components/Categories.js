@@ -14,24 +14,14 @@ const Categories = () => {
     setCategory(selectedCategory);
   };
 
-  let heading = "All";
-  if (category === "men") {
-    heading = "Mens";
-  } else if (category === "women") {
-    heading = "Womens";
-  } else if (category === "kid") {
-    heading = "Kids";
-  }
+
 
   return (
     <div className="container mx-auto mt-36 mb-20 text-center">
-      <div className="flex items-center mb-16 justify-center">
-        <h1 className="text-3xl font-semibold mx-auto uppercase">{heading}</h1>
-      </div>
       <div className="flex flex-wrap justify-center space-x-2 md:space-x-4 mb-12 md:mb-12 text-md">
         <button
           className={`border-2 border-neutral-500 px-4 pb-[4px] pt-1 ${
-            category === "all" && "active"
+            category === "all" ? "bg-fadeCustom text-black border-none" : ""
           }`}
           onClick={() => handleFilter("all")}
         >
@@ -39,7 +29,7 @@ const Categories = () => {
         </button>
         <button
           className={`border-2 border-neutral-500 px-4 pb-[4px] pt-1  ${
-            category === "men" && "active"
+            category === "men" ? "bg-fadeCustom text-black border-none" : ""
           }`}
           onClick={() => handleFilter("men")}
         >
@@ -47,7 +37,7 @@ const Categories = () => {
         </button>
         <button
           className={`border-2 border-neutral-500 px-4 pb-[4px] pt-1  ${
-            category === "women" && "active"
+            category === "women" ? "bg-fadeCustom text-black border-none" : ""
           }`}
           onClick={() => handleFilter("women")}
         >
@@ -55,14 +45,14 @@ const Categories = () => {
         </button>
         <button
           className={`border-2 border-neutral-500 px-4 pb-[4px] pt-1  ${
-            category === "kid" && "active"
+            category === "kid" ? "bg-fadeCustom text-black border-none" : ""
           }`}
           onClick={() => handleFilter("kid")}
         >
           Kid
         </button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-left">
         {filteredItems.map((product) => (
           <div key={product.id} className="px-5 mb-8">
             <Product product={product} />
