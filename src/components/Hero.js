@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="h-[650px] bg-hero bg-no-repeat bg-cover bg-center py-24  backdrop-blur-sm">
+    <section className="h-[650px] bg-hero bg-no-repeat bg-cover bg-center py-24 backdrop-blur-sm">
       <div className="container mx-auto flex justify-start h-full "> 
         {/* text */}
         <div className="flex flex-col justify-center">
@@ -16,7 +16,7 @@ const Hero = () => {
             <span className="font-semibold uppercase">Perfect Look</span>
           </h1>
           <Link
-            to={"/"}
+            to={"/category"}
             
             className="self-start uppercase font-semibold border-b-2 border-primary"
           >
