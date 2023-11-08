@@ -44,7 +44,7 @@ const Header = () => {
             className="cursor-pointer relative"
           >
             <BsBag className="text-2xl" />
-            <div className="bg-custom absolute -right-2 -bottom-2 text-xs w-6 h-6 text-white rounded-full flex justify-center items-center">
+            <div className="bg-custom absolute -right-2 -bottom-2 text-xs w-5 h-5 text-white rounded-full flex justify-center items-center">
               {itemAmount}
             </div>
           </div>
