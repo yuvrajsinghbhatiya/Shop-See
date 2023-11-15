@@ -4,7 +4,7 @@ import { CartContext } from "../contexts/CartContext";
 import { BsBag } from "react-icons/bs";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Logo from "../img/logo.png";
+import Logo from "../img/logo.webp";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
