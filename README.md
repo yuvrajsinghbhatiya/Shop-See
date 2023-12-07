@@ -29,13 +29,18 @@ Welcome to **SHOPSEE**, your go-to destination for online shopping! This React-b
 
 2. **Install Dependencies:**:
 
+    ```
     cd shopsee
-   
+    ```
+   ```
     npm install
+    ```
 
 4. **Start the Development Server**:
 
+```
     npm start
+```
 
 
 ## Hosted Url- 
@@ -46,7 +51,3 @@ Welcome to **SHOPSEE**, your go-to destination for online shopping! This React-b
 
 
 ##Happy Shopping with SHOPSEE! 🛒
-
-
-
-amke it for quizz app
