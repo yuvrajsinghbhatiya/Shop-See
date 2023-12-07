@@ -97,7 +97,7 @@ const Footer = () => {
                   <li>
                     <a
                       class="text-footerlink hover:text-fadeCustom font-semibold block pb-2 text-sm"
-                      href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-profile"
+                      href="/category"
                     >
                       Men
                     </a>
@@ -105,7 +105,7 @@ const Footer = () => {
                   <li>
                     <a
                       class="text-footerlink hover:text-fadeCustom font-semibold block pb-2 text-sm"
-                      href="https://creative-tim.com/terms?ref=njs-profile"
+                      href="/category"
                     >
                       Women
                     </a>
@@ -113,7 +113,7 @@ const Footer = () => {
                   <li>
                     <a
                       class="text-footerlink hover:text-fadeCustom font-semibold block pb-2 text-sm"
-                      href="https://creative-tim.com/privacy?ref=njs-profile"
+                      href="/category"
                     >
                       Kids
                     </a>
