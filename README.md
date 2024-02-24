@@ -23,7 +23,7 @@ Welcome to **SHOPSEE**, your go-to destination for online shopping! This React-b
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/yvrjbhatiya/Shop-See
+   git clone https://github.com/yuvrajsinghbhatiya/Shop-See
 
    ```
 
